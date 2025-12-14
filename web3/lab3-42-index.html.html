@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数字展销平台首页</title>
+    <style>      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            width: 100%;
+            height: 80px;
+            border: 2px solid #ccc;
+            padding: 10px 20px; 
+            margin-bottom: 20px; 
+        }
+        .logo {
+            float: left;
+            font-size: 24px;
+            line-height: 60px;
+        }
+        .nav {
+            float: right;
+        }
+        .nav li {
+            float: left;
+            list-style: none;
+            margin-left: 20px;
+            line-height: 60px;
+            cursor: pointer;
+        }
+        .nav li:hover {
+            color: #ff6600;
+        }
+
+       
+        .main {
+            width: 1200px;
+            margin: 0 auto;
+            overflow: hidden; 
+        }      
+        .left-bar {
+            width: 220px; 
+            float: left;
+            border: 2px solid #ddd;
+            padding: 20px; 
+            position: relative; 
+            top: 5px; 
+            font-size: 18px; 
+        }
+        .left-bar h3 {
+            margin-bottom: 15px; 
+            font-size: 22px; 
+        }
+        .left-bar a {
+            display: block;
+            margin: 8px 0; 
+            cursor: pointer;
+            padding-left: 5px;
+        }      
+        .left-bar a::before {
+            margin-right: 8px;
+            color: #ff6600;
+            font-size: 20px;
+        }       
+        .middle-bar {
+            width: 700px; 
+            float: left;
+            margin: 0 25px;
+            border: 1px solid #eee;
+            padding: 20px;
+        }
+        .hot-book {
+            margin-bottom: 20px;
+        }
+        .hot-book h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .book-list {
+            display: flex; 
+            justify-content: space-between; 
+        }
+        .book-item {
+            width: 30%; 
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #f5f5f5;
+        }
+        .book-item img {
+            width: 100%;
+            height: 220px; 
+            margin-bottom: 10px;
+        }     
+        .new-book {
+            margin-top: 20px; 
+        }
+        .new-book h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .new-book table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        .new-book th, .new-book td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        
+        .right-bar {
+            width: 180px; 
+            float: left;
+            border: 2px solid #ddd; 
+            padding: 20px; 
+            font-size: 18px; 
+        }
+        .right-bar h3 {
+            margin-bottom: 15px; 
+            font-size: 22px; 
+        }
+        .right-bar p {
+            margin: 12px 0; 
+            color: #ff6600;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>   
+    <div class="header">
+        <div class="logo">数字展销平台</div>
+        <ul class="nav">
+            <li>首页</li>
+            <li>图书分类</li>
+            <li>优惠活动</li>
+            <li>关于我们</li>
+        </ul>
+    </div>  
+    <div class="main">     
+        <div class="left-bar">
+            <h3>图书分类</h3>         
+            <a><i class="fas fa-book"></i> 小说</a>         
+            <a><i class="fas fa-flask"></i> 科技</a>        
+            <a><i class="fas fa-graduation-cap"></i> 教育</a> 
+            <a><i class="fas fa-landmark"></i> 历史</a>      
+        </div>      
+        <div class="middle-bar">          
+            <div class="hot-book">
+                <h3>热门推荐</h3>
+                <div class="book-list"> 
+                    <div class="book-item">
+                        <img src="book1.jpg" alt="图书1">
+                        <p>《红楼梦》</p>
+                    </div>
+                    <div class="book-item">
+                        <img src="book2.jpg" alt="图书2">
+                        <p>《骆驼祥子》</p>
+                    </div>
+                    <div class="book-item">
+                        <img src="book3.jpg" alt="图书3">
+                        <p>《复活》</p>
+                    </div>
+                </div>
+            </div>          
+            <div class="new-book">
+                <h3>新书上市</h3>
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                    </tr>
+                    <tr>
+                        <td>《故乡》</td>
+                        <td>鲁迅</td>
+                        <td>59.9</td>
+                    </tr>
+                    <tr>
+                        <td>《狼王梦》</td>
+                        <td>沈石溪</td>
+                        <td>69.9</td>
+                    </tr>
+                </table>
+            </div>
+        </div>    
+        <div class="right-bar">
+            <h3>促销信息</h3>
+            <p>满100减20</p>
+            <p>新书8折</p>
+            <p>会员再享9折</p>
+        </div>
+    </div>
+</body>
+</html>
