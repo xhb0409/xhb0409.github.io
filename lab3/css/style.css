@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🔥 强制页面变长，出现上下滚动条 【原有代码完全保留】 */
+body {
+    font-family: "Microsoft YaHei";
+    background: #f5f5f5;
+    padding-top: 90px;
+    overflow-x: hidden;
+    height: 2000px; /* 关键！让页面足够长，能上下拖动 */
+}
+
+/* 头部固定定位 【原有代码完全保留】 */
+.header {
+    width: 1200px;
+    height: 80px;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    background: #fff;
+}
+.logo {
+    float: left;
+    font-size: 24px;
+    line-height: 60px;
+}
+.nav {
+    float: right;
+    list-style: none;
+}
+.nav li {
+    float: left;
+    margin-left: 20px;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 左侧 【原有代码完全保留】 */
+.left-bar {
+    width: 220px;
+    float: left;
+    border: 2px solid #ddd;
+    padding: 20px;
+    position: relative;
+    font-size: 18px;
+    background: #fff;
+}
+.left-bar h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+.left-bar a {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+/* 中间 【原有代码完全保留】 */
+.middle-bar {
+    width: 700px;
+    float: left;
+    margin: 0 25px;
+    border: 1px solid #eee;
+    padding: 20px;
+    background: #fff;
+}
+
+/* 图片布局 【原有代码完全保留】 */
+.book-list {
+    overflow: hidden;
+}
+.book-item {
+    width: 31%;
+    float: left;
+    margin-right: 3.5%;
+    border: 1px solid #f5f5f5;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.book-item:nth-child(3n) {
+    margin-right: 0;
+}
+.book-item img {
+    width: 100%;
+    height: 240px;
+    display: block;
+}
+
+/* 悬浮效果 【原有代码完全保留】 */
+.book-intro {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: 0.3s;
+}
+.book-item:hover .book-intro {
+    transform: translateY(0);
+}
+
+/* 表格 【原有代码完全保留】 */
+.new-book {
+    margin-top: 30px;
+}
+.new-book table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.new-book th, .new-book td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+/* 🔥 右侧固定定位 【原有代码完全保留】 */
+.right-bar {
+    width: 180px;
+    border: 2px solid #ddd;
+    padding: 20px;
+    background: #fff;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: 420px;
+}
+.right-bar h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+.right-bar p {
+    margin: 12px 0;
+    color: #ff4400;
+}
+/* 只改这个！控制 logo 图片大小 【原有代码完全保留】 */
+.logo {
+    height: 50px;    /* 调小高度 */
+    width: auto;     /* 保持比例不变形 */
+}
+
+
+/* ==============================================
+【以下全部为新增：登录注册弹窗全部样式】
+完全适配父盒子包裹子表单、显示隐藏切换的布局
+============================================== */
+/* 背景遮罩层 */
+.login-mask {
+    /* 默认隐藏，点击按钮才显示 */
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* 最高层级，覆盖整个页面 */
+}
+
+/* 登录注册总对话框（父容器，登录+注册全部集成在这里） */
+.login-box {
+    width: 380px;
+    height: 420px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+}
+
+/* 登录/注册切换标签栏 */
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+}
+.tab-item {
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #666;
+}
+/* 激活选中的标签样式 */
+.tab-item.active {
+    color: #222;
+    font-weight: bold;
+    border-bottom: 2px solid #409eff;
+}
+
+/* 登录、注册子表单通用样式 */
+.form-box {
+    /* 默认全部隐藏，通过JS切换show类来控制显示隐藏 */
+    display: none;
+}
+/* 显示的表单 */
+.form-box.show {
+    display: block;
+}
+
+/* 表单每一项输入框 */
+.form-item {
+    margin-bottom: 20px;
+}
+.form-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+.form-item input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* 提示文字（成功/失败提示） */
+.tip-text {
+    height: 20px;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* 提交按钮通用样式 */
+.form-btn {
+    width: 100%;
+    height: 42px;
+    background-color: #409eff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.form-btn:hover {
+    background-color: #3386e0;
+}
+
+/* 关闭弹窗叉号按钮 */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    color: #999;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: #333;
+}

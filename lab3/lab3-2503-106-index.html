@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数字展销平台</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 头部固定定位 【原有代码完全保留】 -->
+<div class="header">
+    <div class="logo">数字展销平台</div>
+    <img src="image/ludong.jpg" class="logo" alt="">
+    <ul class="nav">
+        <li>首页</li>
+        <li>图书分类</li>
+        <li>优惠活动</li>
+        <li>关于我们</li>
+        <!-- 【新增】登录入口按钮 -->
+        <li id="loginBtn">登录/注册</li>
+    </ul>
+</div>
+
+<!-- 主体三栏 【原有代码100%完整保留，无任何修改】 -->
+<div class="main">
+
+    <!-- 左侧：相对定位 -->
+    <div class="left-bar">
+        <h3>图书分类</h3>
+        <a>小说</a>
+        <a>科技</a>
+        <a>教育</a>
+        <a>历史</a>
+    </div>
+
+    <!-- 中间：热门推荐 + 新书 -->
+    <div class="middle-bar">
+        <div class="hot-book">
+            <h3>热门推荐</h3>
+            <div class="book-list">
+
+                <!-- 图1 -->
+                <div class="book-item">
+                    <img src="image/book1.jpg" alt="《红楼梦》">
+                    <div class="book-intro">
+                        <p>《红楼梦》</p>
+                        <p>曹雪芹</p>
+                    </div>
+                </div>
+
+                <!-- 图2 -->
+                <div class="book-item">
+                    <img src="image/book2.jpg" alt="《骆驼祥子》">
+                    <div class="book-intro">
+                        <p>《骆驼祥子》</p>
+                        <p>老舍</p>
+                    </div>
+                </div>
+
+                <!-- 图3 -->
+                <div class="book-item">
+                    <img src="image/book3.jpg" alt="《复活》">
+                    <div class="book-intro">
+                        <p>《复活》</p>
+                        <p>列夫·托尔斯泰</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="new-book">
+            <h3>新书上市</h3>
+            <table>
+                <tr>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>价格</th>
+                </tr>
+                <tr>
+                    <td>《故乡》</td>
+                    <td>鲁迅</td>
+                    <td>59.9</td>
+                </tr>
+                <tr>
+                    <td>《狼王梦》</td>
+                    <td>沈石溪</td>
+                    <td>69.9</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 右侧：固定定位 -->
+    <div class="right-bar">
+        <h3>促销信息</h3>
+        <p>满100减20</p>
+        <p>新书8折</p>
+        <p>会员9折</p>
+    </div>
+    
+</div>
+
+<!-- ==============================================
+【以下全部为新增内容，严格满足题目4条全部要求】
+要求1：注册完全集成在登录对话框同一个父容器内
+要求3：全程显示隐藏切换，无任何超链接页面跳转，父盒子包裹子表单结构
+============================================== -->
+<!-- 登录注册遮罩层（整个弹窗的最外层父容器） -->
+<div id="loginMask" class="login-mask">
+    <!-- 登录注册对话框（父盒子，内部包裹登录、注册2个子表单） -->
+    <div class="login-box">
+        <!-- 切换登录/注册的标签栏 -->
+        <div class="tab-header">
+            <span class="tab-item active" id="loginTab">账号登录</span>
+            <span class="tab-item" id="registerTab">用户注册</span>
+        </div>
+
+        <!-- 【子表单1：登录表单】默认显示 -->
+        <div id="loginForm" class="form-box show">
+            <div class="form-item">
+                <label>用户名</label>
+                <input type="text" id="loginUser" placeholder="请输入用户名">
+            </div>
+            <div class="form-item">
+                <label>密码</label>
+                <input type="password" id="loginPwd" placeholder="请输入密码">
+            </div>
+            <div class="tip-text" id="loginTip"></div>
+            <button class="form-btn" id="loginSubmitBtn">登录</button>
+        </div>
+
+        <!-- 【子表单2：注册表单】默认隐藏，和登录同框集成 -->
+        <div id="registerForm" class="form-box">
+            <div class="form-item">
+                <label>用户名</label>
+                <input type="text" id="regUser" placeholder="请设置用户名">
+            </div>
+            <div class="form-item">
+                <label>密码</label>
+                <input type="password" id="regPwd" placeholder="请设置密码">
+            </div>
+            <div class="form-item">
+                <label>确认密码</label>
+                <input type="password" id="regRepwd" placeholder="再次输入密码">
+            </div>
+            <div class="tip-text" id="regTip"></div>
+            <button class="form-btn" id="regSubmitBtn">完成注册</button>
+        </div>
+
+        <!-- 关闭弹窗按钮 -->
+        <span id="closeBtn" class="close-btn">×</span>
+    </div>
+</div>
+
+<!-- ==============================================
+【新增JS脚本】
+要求4：HTML5 localStorage本地存储 + 注册数据持久化 + 登录信息本地比对验证
+全程使用 var 关键字声明变量，严格符合你的代码习惯
+============================================== -->
+<script>
+// 全部变量统一用 var 声明，严格遵循你的要求
+// 1. 获取页面所有元素
+var loginBtn = document.getElementById('loginBtn');
+var loginMask = document.getElementById('loginMask');
+var closeBtn = document.getElementById('closeBtn');
+var loginTab = document.getElementById('loginTab');
+var registerTab = document.getElementById('registerTab');
+var loginForm = document.getElementById('loginForm');
+var registerForm = document.getElementById('registerForm');
+
+// 登录表单元素
+var loginUser = document.getElementById('loginUser');
+var loginPwd = document.getElementById('loginPwd');
+var loginTip = document.getElementById('loginTip');
+var loginSubmitBtn = document.getElementById('loginSubmitBtn');
+
+// 注册表单元素
+var regUser = document.getElementById('regUser');
+var regPwd = document.getElementById('regPwd');
+var regRepwd = document.getElementById('regRepwd');
+var regTip = document.getElementById('regTip');
+var regSubmitBtn = document.getElementById('regSubmitBtn');
+
+// 2. 打开登录弹窗（点击头部导航的登录按钮）
+loginBtn.onclick = function(){
+    loginMask.style.display = 'block';
+}
+
+// 3. 关闭弹窗
+closeBtn.onclick = function(){
+    loginMask.style.display = 'none';
+    // 关闭时清空输入框和提示文字
+    loginUser.value = '';
+    loginPwd.value = '';
+    regUser.value = '';
+    regPwd.value = '';
+    regRepwd.value = '';
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+// 4. 【核心】登录/注册 显示隐藏切换（完全满足：无跳转、无超链接，父盒子包含子元素切换）
+// 切换到登录面板
+loginTab.onclick = function(){
+    // 标签激活样式切换
+    loginTab.classList.add('active');
+    registerTab.classList.remove('active');
+    // 表单显示隐藏切换
+    loginForm.classList.add('show');
+    registerForm.classList.remove('show');
+    // 清空提示信息
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+// 切换到注册面板
+registerTab.onclick = function(){
+    // 标签激活样式切换
+    registerTab.classList.add('active');
+    loginTab.classList.remove('active');
+    // 表单显示隐藏切换
+    registerForm.classList.add('show');
+    loginForm.classList.remove('show');
+    // 清空提示信息
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+// 5. 【核心】HTML5 localStorage 本地存储 - 注册功能
+regSubmitBtn.onclick = function(){
+    // 获取表单输入值
+    var username = regUser.value.trim();
+    var pwd = regPwd.value.trim();
+    var repwd = regRepwd.value.trim();
+
+    // 表单基础校验
+    if(username == '' || pwd == ''){
+        regTip.innerText = '用户名和密码不能为空！';
+        regTip.style.color = 'red';
+        return;
+    }
+    if(pwd != repwd){
+        regTip.innerText = '两次输入密码不一致！';
+        regTip.style.color = 'red';
+        return;
+    }
+
+    // 读取本地存储里已有的用户数据
+    // localStorage只能存字符串，所以用JSON解析
+    var userList = localStorage.getItem('userData');
+    var userArr;
+    if(userList == null){
+        // 本地无数据时，初始化空数组
+        userArr = [];
+    }else{
+        // 有数据就解析成数组对象
+        userArr = JSON.parse(userList);
+    }
+
+    // 校验用户名是否已经被注册过
+    var isExist = false;
+    for(var i=0; i<userArr.length; i++){
+        if(userArr[i].username == username){
+            isExist = true;
+            break;
+        }
+    }
+    if(isExist){
+        regTip.innerText = '该用户名已经被注册！';
+        regTip.style.color = 'red';
+        return;
+    }
+
+    // 全部校验通过，新增用户存入本地localStorage
+    userArr.push({
+        username: username,
+        password: pwd
+    });
+    // 把数组转字符串存入本地存储，页面刷新数据不会丢失
+    localStorage.setItem('userData', JSON.stringify(userArr));
+
+    // 注册成功提示，自动切换回登录面板
+    regTip.innerText = '注册成功！即将切换到登录';
+    regTip.style.color = 'green';
+    setTimeout(function(){
+        // 自动切换登录界面，依旧无页面跳转
+        loginTab.click();
+        // 自动填充用户名到登录框
+        loginUser.value = username;
+    },1000);
+}
+
+// 6. 【核心】本地存储数据比对 - 登录验证功能
+loginSubmitBtn.onclick = function(){
+    // 获取登录输入框内容
+    var loginName = loginUser.value.trim();
+    var loginPass = loginPwd.value.trim();
+
+    // 非空校验
+    if(loginName == '' || loginPass == ''){
+        loginTip.innerText = '用户名和密码不能为空！';
+        loginTip.style.color = 'red';
+        return;
+    }
+
+    // 读取本地存储的全部用户数据
+    var localUser = localStorage.getItem('userData');
+    var userArray;
+    if(localUser == null){
+        loginTip.innerText = '暂无注册用户，请先注册账号！';
+        loginTip.style.color = 'red';
+        return;
+    }else{
+        userArray = JSON.parse(localUser);
+    }
+
+    // 遍历本地数据，一一比对账号密码
+    var loginSuccess = false;
+    for(var j=0; j<userArray.length; j++){
+        if(userArray[j].username == loginName && userArray[j].password == loginPass){
+            loginSuccess = true;
+            break;
+        }
+    }
+
+    // 验证结果判断
+    if(loginSuccess){
+        loginTip.innerText = '登录成功！';
+        loginTip.style.color = 'green';
+        // 登录成功后2秒关闭弹窗
+        setTimeout(function(){
+            loginMask.style.display = 'none';
+        },1000);
+    }else{
+        loginTip.innerText = '用户名或密码错误！';
+        loginTip.style.color = 'red';
+    }
+}
+</script>
+
+</body>
+</html>
