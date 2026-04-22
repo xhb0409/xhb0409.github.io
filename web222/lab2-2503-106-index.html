@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>鲁东大学数字展销平台</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 顶部蓝色导航栏 -->
+<div class="header">
+    <!-- 左侧logo区域 -->
+    <div class="header-logo">
+        <img src="image/ludong.jpg" alt="鲁东大学logo">
+        <div class="logo-text">
+            <div class="logo-title">鲁東大学</div>
+            <div class="logo-en">LUDONG UNIVERSITY</div>
+        </div>
+    </div>
+
+    <!-- 中间主导航菜单 -->
+    <ul class="nav">
+        <li class="nav-item">首页</li>
+        <li class="nav-item">图书分类 ▾</li>
+        <li class="nav-item">热门推荐 ▾</li>
+        <li class="nav-item">新书上市 ▾</li>
+        <li class="nav-item">促销活动 ▾</li>
+        <li class="nav-item">其他服务 ▾</li>
+    </ul>
+
+    <!-- 右侧登录购物车 -->
+    <div class="header-right">
+        <span id="loginBtn" class="login-link">👤 登录</span>
+        <span class="cart-link">🛒 购物车</span>
+    </div>
+</div>
+
+<!-- 主体三栏容器 -->
+<div class="main">
+
+    <!-- 左侧边栏：仅保留图书分类，已删除热门标签 -->
+    <div class="left-bar">
+        <div class="left-title">
+            <span class="icon">☰</span>
+            图书分类
+        </div>
+        <div class="category-list">
+            <div class="category-item">📖 文学小说</div>
+            <div class="category-item">🌍 人文地理</div>
+            <div class="category-item">📊 经济专区</div>
+            <div class="category-item">💻 科技小说</div>
+            <div class="category-item">📰 生活报刊</div>
+            <div class="category-item">👦 青少年专区</div>
+            <div class="category-item">📚 教育教辅</div>
+            <div class="category-item">📜 外语旧书</div>
+        </div>
+    </div>
+
+    <!-- 中间主体区域：热门推荐+新书上市 -->
+    <div class="middle-bar">
+        <!-- 热门推荐模块 -->
+        <div class="hot-book">
+            <div class="module-head">
+                <h3>热门推荐</h3>
+                <a href="#" class="more">更多 ></a>
+            </div>
+            <div class="book-list">
+
+                <!-- 书籍1 -->
+                <div class="book-item">
+                    <div class="book-img-box">
+                        <img src="image/book1.jpg" alt="红楼梦">
+                        <div class="book-hover">
+                            <p class="book-desc">经典文学名著</p>
+                            <div class="btn-group">
+                                <button class="detail-btn">查看详情</button>
+                                <button class="cart-btn">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <p class="book-name">红楼梦</p>
+                        <div class="price-box">
+                            <span class="now-price">¥38.00</span>
+                            <span class="old-price">¥928.00</span>
+                        </div>
+                        <p class="sold">已售 2000+</p>
+                    </div>
+                </div>
+
+                <!-- 书籍2 -->
+                <div class="book-item">
+                    <div class="book-img-box">
+                        <img src="image/book2.jpg" alt="骆驼祥子">
+                        <div class="book-hover">
+                            <p class="book-desc">经典文学著作</p>
+                            <div class="btn-group">
+                                <button class="detail-btn">查看详情</button>
+                                <button class="cart-btn">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <p class="book-name">骆驼祥子</p>
+                        <div class="price-box">
+                            <span class="now-price">¥39.00</span>
+                            <span class="old-price">¥60.00</span>
+                        </div>
+                        <p class="sold">已售 6000+</p>
+                    </div>
+                </div>
+
+                <!-- 书籍3 -->
+                <div class="book-item">
+                    <div class="book-img-box">
+                        <img src="image/book3.jpg" alt="复活">
+                        <div class="book-hover">
+                            <p class="book-desc">古罗马哲学经典，人生智慧散文集</p>
+                            <div class="btn-group">
+                                <button class="detail-btn">查看详情</button>
+                                <button class="cart-btn">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <p class="book-name">复活</p>
+                        <div class="price-box">
+                            <span class="now-price">¥45.00</span>
+                            <span class="old-price">¥75.00</span>
+                        </div>
+                        <p class="sold">已售 1200+</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 新书上市：全部替换为计算机相关书籍 -->
+        <div class="new-book">
+            <div class="module-head">
+                <h3>新书上市</h3>
+                <a href="#" class="more">更多 ></a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML5+CSS3网页开发实战</td>
+                        <td>张峰</td>
+                        <td>电子工业出版社</td>
+                        <td>¥49.00</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript前端编程基础</td>
+                        <td>王浩</td>
+                        <td>清华大学出版社</td>
+                        <td>¥55.00</td>
+                    </tr>
+                    <tr>
+                        <td>Web前端项目实战教程</td>
+                        <td>刘阳</td>
+                        <td>机械工业出版社</td>
+                        <td>¥62.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 右侧模块：热销排行榜（正常流式布局） -->
+    <div class="right-bar">
+        <div class="right-module rank-module">
+            <div class="right-title">
+                <span class="icon">📶</span>
+                热销排行榜
+            </div>
+            <div class="rank-list">
+                <div class="rank-item rank-1">
+                    <span class="rank-num">1</span>
+                    三国演义
+                </div>
+                <div class="rank-item rank-2">
+                    <span class="rank-num">2</span>
+                    Web从实践到精通
+                </div>
+                <div class="rank-item rank-3">
+                    <span class="rank-num">3</span>
+                    西游记
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">4</span>
+                    水浒传
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num">5</span>
+                    Web权威指南
+                </div>
+            </div>
+        </div>
+
+        <div class="right-module account-module">
+            <div class="right-title">
+                <span class="icon">👤</span>
+                我的账户
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 促销信息模块 单独设置【绝对定位】 ========== -->
+    <div class="promo-box">
+        <div class="right-title">
+            <span class="icon">🎁</span>
+            优惠活动
+        </div>
+        <div class="promo-list">
+            <div class="promo-item">
+                <div class="promo-tag">
+                    <span>💙</span> 全场满减活动
+                </div>
+                <p>计算机图书满150减40，满300减80</p>
+            </div>
+            <div class="promo-item">
+                <div class="promo-tag">
+                    <span>💙</span> 新用户专属福利
+                </div>
+                <p>注册即领30元无门槛购书优惠券</p>
+            </div>
+            <div class="promo-item">
+                <div class="promo-tag">
+                    <span>💙</span> 限时折扣专场
+                </div>
+                <p>编程类书籍限时低至4.5折优惠</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- 右下角悬浮按钮 -->
+<div class="fixed-btn">
+    <div class="back-top">↑</div>
+    <div class="cart-float">
+        <span class="cart-num">3</span>
+    </div>
+</div>
+
+<!-- 登录注册弹窗 全部功能保留 -->
+<div id="loginMask" class="login-mask">
+    <div class="login-box">
+        <div class="tab-header">
+            <span class="tab-item active" id="loginTab">账号登录</span>
+            <span class="tab-item" id="registerTab">用户注册</span>
+        </div>
+
+        <div id="loginForm" class="form-box show">
+            <div class="form-item">
+                <label>用户名</label>
+                <input type="text" id="loginUser" placeholder="请输入用户名">
+            </div>
+            <div class="form-item">
+                <label>密码</label>
+                <input type="password" id="loginPwd" placeholder="请输入密码">
+            </div>
+            <div class="tip-text" id="loginTip"></div>
+            <button class="form-btn" id="loginSubmitBtn">登录</button>
+        </div>
+
+        <div id="registerForm" class="form-box">
+            <div class="form-item">
+                <label>用户名</label>
+                <input type="text" id="regUser" placeholder="请设置用户名">
+            </div>
+            <div class="form-item">
+                <label>密码</label>
+                <input type="password" id="regPwd" placeholder="请设置密码">
+            </div>
+            <div class="form-item">
+                <label>确认密码</label>
+                <input type="password" id="regRepwd" placeholder="再次输入密码">
+            </div>
+            <div class="tip-text" id="regTip"></div>
+            <button class="form-btn" id="regSubmitBtn">完成注册</button>
+        </div>
+
+        <span id="closeBtn" class="close-btn">×</span>
+    </div>
+</div>
+
+<script>
+// 全部 var 声明变量，localStorage本地存储功能完整保留
+var loginBtn = document.getElementById('loginBtn');
+var loginMask = document.getElementById('loginMask');
+var closeBtn = document.getElementById('closeBtn');
+var loginTab = document.getElementById('loginTab');
+var registerTab = document.getElementById('registerTab');
+var loginForm = document.getElementById('loginForm');
+var registerForm = document.getElementById('registerForm');
+
+var loginUser = document.getElementById('loginUser');
+var loginPwd = document.getElementById('loginPwd');
+var loginTip = document.getElementById('loginTip');
+var loginSubmitBtn = document.getElementById('loginSubmitBtn');
+
+var regUser = document.getElementById('regUser');
+var regPwd = document.getElementById('regPwd');
+var regRepwd = document.getElementById('regRepwd');
+var regTip = document.getElementById('regTip');
+var regSubmitBtn = document.getElementById('regSubmitBtn');
+
+// ✅ 已删除：loginBtn.onclick 点击弹出事件
+
+closeBtn.onclick = function(){
+    loginMask.style.display = 'none';
+    loginUser.value = '';
+    loginPwd.value = '';
+    regUser.value = '';
+    regPwd.value = '';
+    regRepwd.value = '';
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+loginTab.onclick = function(){
+    loginTab.classList.add('active');
+    registerTab.classList.remove('active');
+    loginForm.classList.add('show');
+    registerForm.classList.remove('show');
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+registerTab.onclick = function(){
+    registerTab.classList.add('active');
+    loginTab.classList.remove('active');
+    registerForm.classList.add('show');
+    loginForm.classList.remove('show');
+    loginTip.innerText = '';
+    regTip.innerText = '';
+}
+
+// 注册存储
+regSubmitBtn.onclick = function(){
+    var username = regUser.value.trim();
+    var pwd = regPwd.value.trim();
+    var repwd = regRepwd.value.trim();
+
+    if(username == '' || pwd == ''){
+        regTip.innerText = '用户名和密码不能为空！';
+        regTip.style.color = 'blue';
+        return;
+    }
+    if(pwd != repwd){
+        regTip.innerText = '两次输入密码不一致！';
+        regTip.style.color = 'blue';
+        return;
+    }
+
+    var userList = localStorage.getItem('userData');
+    var userArr;
+    if(userList == null){
+        userArr = [];
+    }else{
+        userArr = JSON.parse(userList);
+    }
+
+    var isExist = false;
+    for(var i=0; i<userArr.length; i++){
+        if(userArr[i].username == username){
+            isExist = true;
+            break;
+        }
+    }
+    if(isExist){
+        regTip.innerText = '该用户名已经被注册！';
+        regTip.style.color = 'blue';
+        return;
+    }
+
+    userArr.push({
+        username: username,
+        password: pwd
+    });
+    localStorage.setItem('userData', JSON.stringify(userArr));
+
+    regTip.innerText = '注册成功！即将切换到登录';
+    regTip.style.color = '#0066cc';
+    setTimeout(function(){
+        loginTab.click();
+        loginUser.value = username;
+    },1000);
+}
+
+// 登录验证
+loginSubmitBtn.onclick = function(){
+    var loginName = loginUser.value.trim();
+    var loginPass = loginPwd.value.trim();
+
+    if(loginName == '' || loginPass == ''){
+        loginTip.innerText = '用户名和密码不能为空！';
+        loginTip.style.color = 'blue';
+        return;
+    }
+
+    var localUser = localStorage.getItem('userData');
+    var userArray;
+    if(localUser == null){
+        loginTip.innerText = '暂无注册用户，请先注册账号！';
+        loginTip.style.color = 'blue';
+        return;
+    }else{
+        userArray = JSON.parse(localUser);
+    }
+
+    var loginSuccess = false;
+    for(var j=0; j<userArray.length; j++){
+        if(userArray[j].username == loginName && userArray[j].password == loginPass){
+            loginSuccess = true;
+            break;
+        }
+    }
+
+    if(loginSuccess){
+        loginTip.innerText = '登录成功！';
+        loginTip.style.color = '#0066cc';
+        setTimeout(function(){
+            loginMask.style.display = 'none';
+        },1000);
+    }else{
+        loginTip.innerText = '用户名或密码错误！';
+        loginTip.style.color = 'blue';
+    }
+}
+</script>
+
+</body>
+</html>
